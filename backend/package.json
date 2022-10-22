@@ -1,0 +1,11 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "let's create backend for our insta clone",
+  "main": "app.js",
+  "scripts": {
+    "test": "node app.js"
+  },
+  "author": "genSeven",
+  "license": "MIT"
+}
