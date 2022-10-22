@@ -1,5 +1,5 @@
 import { Users } from "./dummy";
 
 const Posts = Users.map((data)=>{
-    return [...Users,postImage:""]
+    return [...Users]
 })
