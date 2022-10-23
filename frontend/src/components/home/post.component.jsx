@@ -13,6 +13,7 @@ export const PostComponent = ({post})=>{
         <PostFooter/>
         <Likes post={post}/>
         <Caption post={post}/>
+        <Comment/>
       </View>    
       );
 };
@@ -43,6 +44,11 @@ const Caption = ({post})=>{
             </Text>
         </View>
     );
+}
+const Comment = ()=>{
+    return (<View style={{marginLeft:20}}>
+        <Text style={{color:"grey"}}>view all 3 comments</Text>
+    </View>);
 }
 const PostImage =({post})=>{return (
     <View style={{width:"100%",height:450}}>
