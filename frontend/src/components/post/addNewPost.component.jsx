@@ -1,10 +1,8 @@
 import { Icon } from "@rneui/themed";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { PostData } from "./post.component";
 
-export const AddNewPost = () => {
-    
-    
-    
+export const AddNewPost = () => {    
 const Header=()=> (
             <View style={styles.headerContainer}>
                 {/*<ion-icon name="arrow-back-outline"></ion-icon>*/}
@@ -16,11 +14,17 @@ const Header=()=> (
             Add new post
         </Text>
         <Text></Text>
+        
     </View>
     );
+
+
+
     return (
     <View style={styles.container}>
-    <Header/>    
+    <Header/>
+    {/* post form */}    
+    <PostData/>
     </View>
     );
 
