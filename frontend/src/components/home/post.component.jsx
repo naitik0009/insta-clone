@@ -3,6 +3,7 @@ import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { Icon } from "@rneui/base";
 import { useState } from "react";
 
+
 export const PostComponent = ({post})=>{
     console.log(post);
     return (
@@ -13,7 +14,8 @@ export const PostComponent = ({post})=>{
         <PostFooter/>
         <Likes post={post}/>
         <Caption post={post}/>
-        <Comment/>
+        <Comment post={post}/>
+       
       </View>    
       );
 };
@@ -45,9 +47,9 @@ const Caption = ({post})=>{
         </View>
     );
 }
-const Comment = ()=>{
-    return (<View style={{marginLeft:20}}>
-        <Text style={{color:"grey"}}>view all 3 comments</Text>
+const Comment = ({post})=>{
+    return (<View style={{marginLeft:20,marginTop:5}}>
+   { !!post.item.comments  &&   ( <Text style={{color:"grey"}}>View {post.item.comments.length>1 ? "all":""} {post.item.comments.length>1 ? post.item.comments.length : "" } {post.item.comments.length>1 ? "comments" :"comment" } </Text> ) }
     </View>);
 }
 const PostImage =({post})=>{return (
@@ -55,6 +57,8 @@ const PostImage =({post})=>{return (
         <Image style={{height:"100%",resizeMode:"cover"}} source={{uri:post.item.image}} />
     </View>
     )}
+
+
 
 const PostFooter = ()=>{
     const [heart,setHeart] = useState(false);
