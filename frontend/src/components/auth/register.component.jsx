@@ -3,13 +3,14 @@ import { Button, TextInput } from "react-native"
 import { Formik } from "formik"
 import * as yup from "yup";
 import { validate } from "email-validator";
-export const LoginComponent = ({ navigation }) => {
-    const LoginFormSchema = yup.object().shape({
+
+export const RegisterComponent = ({ navigation }) => {
+    const RegisterFormSchema = yup.object().shape({
         email: yup.string().required("An email is required"),
         password: yup.string().required().min(8, "Your password should be atleast 8 character long")
     })
     return (
-        <Formik initialValues={{ email: "", password: "" }} onSubmit={(values) => { console.log(values); navigation.navigate("Home") }} validationSchema={LoginFormSchema} validateOnMount={true} >
+        <Formik initialValues={{ email: "", password: "" }} onSubmit={(values) => { console.log(values); navigation.navigate("Home") }} validationSchema={RegisterFormSchema} validateOnMount={true} >
             {({ handleBlur, handleChange, handleSubmit, isValid, values, errors }) => (
                 <View style={styles.container}>
                     <TextInput
@@ -32,14 +33,12 @@ export const LoginComponent = ({ navigation }) => {
                         onBlur={handleBlur("password")}
                         value={values.password}
                         style={[styles.textBox,{borderColor:values.password.length < 1 || values.password.length >= 8 ? "black" : "red" }]} autoCapitalize="none" autoCorrect={false} placeholder="enter your password" textContentType="password" placeholderTextColor={"grey"} secureTextEntry={true} />
-                    <View style={{ alignItems: "flex-end", marginBottom: 10 }}>
-                        <Text style={{ color: "#6BB0F5" }}>Forgot password ?</Text>
-                    </View>
+               
                     <View style={styles.button(isValid)}>
-                        <Button title="Log In" onPress={handleSubmit} disabled={!isValid} color={"white"} />
+                        <Button title="Sign up" onPress={handleSubmit} disabled={!isValid} color={"white"} />
                     </View>
                     <View style={{ flexDirection: "row", marginTop: 10, alignItems: "center", justifyContent: "center" }}>
-                        <Text>Don't have an account ? </Text><TouchableOpacity onPress={()=>{navigation.navigate("Register")}}><Text style={{ color: "#0096F6" }}>Sign up</Text></TouchableOpacity>
+                        <Text>Already have an account ? </Text><TouchableOpacity onPress={()=>{navigation.navigate("Login")}}><Text style={{ color: "#0096F6" }}>Sign in</Text></TouchableOpacity>
                     </View>
                 </View>
             )}
