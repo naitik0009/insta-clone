@@ -2,7 +2,7 @@ import { StyleSheet, Text, Image, View, TouchableOpacity } from "react-native"
 import { Icon } from "@rneui/base"
 import { LogoComponent } from "./logo.component"
 
-export const HeaderComponent = () => {
+export const HeaderComponent = ({navigation}) => {
     return (
         <View style={styles.container}>
 
@@ -10,7 +10,7 @@ export const HeaderComponent = () => {
                 <LogoComponent />
             </TouchableOpacity>
             <View style={{ flexDirection: "row", }}>
-                <TouchableOpacity><Icon type="feather" name="plus-square" color={"white"} style={{margin:5}}/></TouchableOpacity>
+                <TouchableOpacity><Icon type="feather" name="plus-square" onPress={()=>{return navigation.navigate("Post")}} color={"white"} style={{margin:5}}/></TouchableOpacity>
                 <TouchableOpacity><Icon type="ionicon" name="heart-outline" color="white" style={{margin:5}}/></TouchableOpacity>
 
                 <TouchableOpacity>

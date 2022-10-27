@@ -2,11 +2,11 @@ import { Icon } from "@rneui/themed";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { PostData } from "./post.component";
 
-export const AddNewPost = () => {    
+export const AddNewPost = ({navigation}) => {    
 const Header=()=> (
             <View style={styles.headerContainer}>
                 {/*<ion-icon name="arrow-back-outline"></ion-icon>*/}
-                <TouchableOpacity>
+                <TouchableOpacity onPress={()=>(navigation.goBack())}>
                 <Icon type="ionicon" name="arrow-back-outline" color={"white"} size={30}/>
                 </TouchableOpacity>
         
@@ -24,7 +24,7 @@ const Header=()=> (
     <View style={styles.container}>
     <Header/>
     {/* post form */}    
-    <PostData/>
+    <PostData navigation={navigation}/>
     </View>
     );
 

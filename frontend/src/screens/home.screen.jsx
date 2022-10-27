@@ -5,15 +5,15 @@ import { StoryComponent } from "../components/home/stories"
 import { Divider } from "@rneui/base"
 import { BottomNavigationComponenet, BottomTabIcons } from "../components/home/bottomTab.component";
 import {Users} from "../services/data/dummy";
-export const HomeScreen = ()=>{
-    var i =0;
+export const HomeScreen = ({navigation})=>{
+    var i = 0;
     return (
         <>
         <SafeAreaView style={styles.container}>
-            <HeaderComponent />
+            <HeaderComponent navigation={navigation} />
             <StoryComponent/>
 
-            <FlatList data={Users} key={i++} renderItem={(item,index,separators)=>(<PostComponent post={item}  key={i++}/>)} keyExtractor=  {item => item.id} />
+            <FlatList data={Users} key={i++} renderItem={(item,index)=>(<PostComponent post={item}  key={index}/>)} keyExtractor=  {item => item.id} />
             <BottomNavigationComponenet icons={BottomTabIcons}/>
         </SafeAreaView>
         </>
