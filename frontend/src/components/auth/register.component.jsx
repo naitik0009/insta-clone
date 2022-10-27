@@ -7,16 +7,17 @@ import { validate } from "email-validator";
 export const RegisterComponent = ({ navigation }) => {
     const RegisterFormSchema = yup.object().shape({
         email: yup.string().required("An email is required"),
+        username:yup.string().required("Enter a username").min(6,"Your username should be atleast 6 character long"),
         password: yup.string().required().min(8, "Your password should be atleast 8 character long")
     })
     return (
-        <Formik initialValues={{ email: "", password: "" }} onSubmit={(values) => { console.log(values); navigation.navigate("Home") }} validationSchema={RegisterFormSchema} validateOnMount={true} >
+        <Formik initialValues={{ email: "", password: "" , username:"" }} onSubmit={(values) => { console.log(values); navigation.navigate("Login") }} validationSchema={RegisterFormSchema} validateOnMount={true} >
             {({ handleBlur, handleChange, handleSubmit, isValid, values, errors }) => (
                 <View style={styles.container}>
                     <TextInput
                         style={[styles.textBox,{borderColor:values.email.length < 1 || validate(values.email) ? "black" : "red" }]}
                         placeholderTextColor={"grey"}
-                        placeholder={"Phone number,username or email"}
+                        placeholder={"Phone number or email"}
                         autoCapitalize="none"
                         keyboardType="email-address"
                         textContentType="emailAddress"
@@ -24,6 +25,19 @@ export const RegisterComponent = ({ navigation }) => {
                         onChangeText={handleChange("email")}
                         onBlur={handleBlur("email")}
                         value={values.email}
+
+                    />
+                    <TextInput
+                        style={[styles.textBox,{borderColor:values.username.length < 1 || values.username.length>=6 ? "black" : "red" }]}
+                        placeholderTextColor={"grey"}
+                        placeholder={"username"}
+                        autoCapitalize="none"
+                        keyboardType="email-address"
+                        textContentType="emailAddress"
+                        autoFocus={true}
+                        onChangeText={handleChange("username")}
+                        onBlur={handleBlur("username")}
+                        value={values.username}
 
                     />
                     {/* {errors.email} */}
