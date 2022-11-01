@@ -5,7 +5,7 @@ import * as yup from "yup";
 import axios from "axios"
 import { validate } from "email-validator";
 import { authentication,db } from "../../services/databases/firebase.config";
-import { collection, getDocs, addDoc } from 'firebase/firestore/lite';
+import { collection,  addDoc,setDoc,doc } from 'firebase/firestore/lite';
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import React from "react";
 
@@ -27,7 +27,8 @@ export const RegisterComponent = ({ navigation }) => {
             
             setLoading(true);
             await createUserWithEmailAndPassword(authentication, email, password).then(async (result) => {
-                addDoc(collection(db, "users"), {
+                
+                setDoc(doc(db, "users",authentication.currentUser.email), {
                     ownerId: result.user.uid,
                     username: username,
                     email: result.user.email,
