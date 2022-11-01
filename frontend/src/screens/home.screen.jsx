@@ -13,7 +13,7 @@ export const HomeScreen = ({navigation})=>{
             <HeaderComponent navigation={navigation} />
             <StoryComponent/>
 
-            <FlatList data={Users} key={i++} renderItem={(item,index)=>(<PostComponent post={item}  key={index}/>)} keyExtractor=  {item => item.id} />
+            <FlatList data={Users} key={i} renderItem={(item,index)=>(<PostComponent post={item}  key={i++}/>)} keyExtractor=  {item => item.id} />
             <BottomNavigationComponenet icons={BottomTabIcons}/>
         </SafeAreaView>
         </>

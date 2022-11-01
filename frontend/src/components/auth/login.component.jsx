@@ -3,7 +3,7 @@ import { Formik } from "formik"
 import { ActivityIndicator} from 'react-native-paper';
 import * as yup from "yup";
 import { validate } from "email-validator";
-import { authentication } from "../../services/data/databases/firebase.config";
+import { authentication } from "../../services/databases/firebase.config";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import React from "react";
 

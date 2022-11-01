@@ -11,11 +11,18 @@ const screenOption = {
 };
 export const SignedInStack = ()=>(
 <NavigationContainer>
-    <Stack.Navigator initialRouteName="Login" screenOptions={screenOption}>
+    <Stack.Navigator initialRouteName="Home" screenOptions={screenOption}>
         <Stack.Screen name="Home" component={HomeScreen}/>
         <Stack.Screen name="Post" component={PostScreen} />
-        <Stack.Screen name="Login" component={LoginScreen} />
-        <Stack.Screen name="Register" component={RegisterScreen}/>
+
     </Stack.Navigator>
 </NavigationContainer>
 );
+export const SignedOutStack = ()=>(
+    <NavigationContainer>
+        <Stack.Navigator initialRouteName="Login" screenOptions={screenOption}>
+            <Stack.Screen name="Login" component={LoginScreen} />
+            <Stack.Screen name="Register" component={RegisterScreen}/>
+        </Stack.Navigator>
+    </NavigationContainer>
+    );

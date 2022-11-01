@@ -5,7 +5,7 @@ import { useState } from "react";
 
 
 export const PostComponent = ({post})=>{
-    console.log(post);
+    
     return (
       <View style={{marginBottom:30}}>
       <Divider width={0.5} orientation="vertical"/>

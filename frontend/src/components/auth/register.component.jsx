@@ -4,7 +4,7 @@ import { Formik } from "formik"
 import * as yup from "yup";
 import axios from "axios"
 import { validate } from "email-validator";
-import { authentication, db } from "../../services/data/databases/firebase.config";
+import { authentication,db } from "../../services/databases/firebase.config";
 import { collection, getDocs, addDoc } from 'firebase/firestore/lite';
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import React from "react";

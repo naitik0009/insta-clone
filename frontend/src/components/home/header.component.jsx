@@ -1,12 +1,24 @@
-import { StyleSheet, Text, Image, View, TouchableOpacity } from "react-native"
-import { Icon } from "@rneui/base"
-import { LogoComponent } from "./logo.component"
-
+import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import { Icon } from "@rneui/base";
+import { LogoComponent } from "./logo.component";
+import { authentication } from "../../services/databases/firebase.config";
+import React from "react";
 export const HeaderComponent = ({navigation}) => {
+    //we have to use context api or redux to bring this loading function into action
+  const [loading,setloading] = React.useState(false);
+    const SignOut = async () => {
+        try {
+            setloading(true);
+           await authentication.signOut().then((result)=>{console.log(result)}).catch((error)=>{alert(error)}).finally(()=>setloading(false));
+        } catch (error) {
+            alert(error.message)
+        }
+    };
+    
     return (
         <View style={styles.container}>
 
-            <TouchableOpacity>
+            <TouchableOpacity onPress={()=>SignOut()}>
                 <LogoComponent />
             </TouchableOpacity>
             <View style={{ flexDirection: "row", }}>
