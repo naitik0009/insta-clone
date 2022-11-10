@@ -1,6 +1,6 @@
 import { Button, TextInput, StyleSheet, Text, TouchableOpacity, View, Alert } from "react-native"
-import { Formik } from "formik"
 import { ActivityIndicator} from 'react-native-paper';
+import { Formik } from "formik"
 import * as yup from "yup";
 import { validate } from "email-validator";
 import { authentication } from "../../services/databases/firebase.config";
@@ -9,6 +9,7 @@ import React from "react";
 
 export const LoginComponent = ({ navigation }) => {
     const [loading, setLoading] = React.useState(false);
+    
     const LoginFormSchema = yup.object().shape({
         email: yup.string().required("An email is required"),
         password: yup.string().required().min(8, "Your password should be atleast 8 character long")

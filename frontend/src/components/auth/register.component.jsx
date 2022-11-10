@@ -27,7 +27,6 @@ export const RegisterComponent = ({ navigation }) => {
             
             setLoading(true);
             await createUserWithEmailAndPassword(authentication, email, password).then(async (result) => {
-                
                 setDoc(doc(db, "users",authentication.currentUser.email), {
                     ownerId: result.user.uid,
                     username: username,
@@ -46,7 +45,9 @@ export const RegisterComponent = ({ navigation }) => {
         <Formik initialValues={{ email: "", password: "", username: "" }} onSubmit={(values) => { SignUp(values.email, values.username, values.password); }} validationSchema={RegisterFormSchema} validateOnMount={true} >
             {({ handleBlur, handleChange, handleSubmit, isValid, values, errors }) => (
                 <View style={styles.container}>
-                    {loading ? (<ActivityIndicator size={"small"} />) : (<View><TextInput
+                    {loading ? (<ActivityIndicator size={"small"} />) : (
+                    <View>
+                        <TextInput
                         style={[styles.textBox, { borderColor: values.email.length < 1 || validate(values.email) ? "black" : "red" }]}
                         placeholderTextColor={"grey"}
                         placeholder={"Phone number or email"}
